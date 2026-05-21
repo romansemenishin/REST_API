@@ -1,0 +1,10 @@
+# Віртуальне середовище
+venv/
+env/
+
+# Кеш Python
+__pycache__/
+*.pyc
+
+# Файли pytest
+.pytest_cache/

@@ -1,0 +1,8 @@
+# Блокуємо venv у всіх підпапках
+**/venv/
+**/env/
+
+# Блокуємо кеш Python та pytest
+**/__pycache__/
+**/.pytest_cache/
+*.pyc
