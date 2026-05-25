@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: Library API Mock
+  description: Мок-сервер для API бібліотеки за допомогою Prism
+  version: 1.0.0
+paths:
+  /books:
+    get:
+      summary: Отримати список всіх книг
+      responses:
+        '200':
+          description: Успішна відповідь зі списком книг
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      summary: Додати нову книгу
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBook'
+      responses:
+        '201':
+          description: Книгу успішно створено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+
+components:
+  schemas:
+    NewBook:
+      type: object
+      required:
+        - title
+        - author
+      properties:
+        title:
+          type: string
+          example: "Інтернат"
+        author:
+          type: string
+          example: "Сергій Жадан"
+    Book:
+      allOf:
+        - $ref: '#/components/schemas/NewBook'
+        - type: object
+          properties:
+            id:
+              type: integer
+              example: 1
